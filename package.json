@@ -1,0 +1,12 @@
+{
+  "name": "wb-load-testing",
+  "version": "1.0.0",
+  "keywords": [
+    "k6"
+  ],
+  "author": "WorkBright",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "node-env-file": "^0.1.8"
+  }
+}
