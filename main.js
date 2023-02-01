@@ -7,6 +7,8 @@ import http from 'k6/http'
  */
 import { getEmployees, createDeleteEmployees } from './api/employees.js'
 import { getCustomFields } from './api/customFields.js'
+import { addStaff } from './app/staff.js'
+import { login } from './auth/login.js'
 
 /**
  * 
@@ -16,6 +18,8 @@ import { getCustomFields } from './api/customFields.js'
 import { getEmployeesScenario } from './scenarios/getEmployees.js'
 import { createDeleteEmployeesScenario } from './scenarios/createDeleteEmployees.js'
 import { getCustomFieldsScenario } from './scenarios/getCustomFields.js'
+import { addStaffScenario } from './scenarios/addStaff.js'
+import { loginScenario } from './scenarios/login.js'
 
 /**
  * 
@@ -31,14 +35,17 @@ export const options = {
     http_req_duration: ['p(95)<1000']
   },
   scenarios: {
-    getEmployees: getEmployeesScenario,
-    getCustomFields: getCustomFieldsScenario,
-    createDeleteEmployees: createDeleteEmployeesScenario
+    //getEmployees: getEmployeesScenario,
+    //getCustomFields: getCustomFieldsScenario,
+    //createDeleteEmployees: createDeleteEmployeesScenario
+    addStaff: addStaffScenario
   },
 }
 
 export {
   getEmployees,
   createDeleteEmployees,
-  getCustomFields
+  getCustomFields,
+  addStaff,
+  login
 }
