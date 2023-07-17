@@ -9,7 +9,7 @@ export function addStaff() {
   sleep(5)
 
   let response = http.post(
-    'https://tomasdornasperone.wb.test/staff',
+    `${__ENV.BASE_URL}/staff`,
     {
       utf8: vars['utf8'],
       authenticity_token: vars['authenticity_token'],
