@@ -29,7 +29,6 @@ export function addStaff() {
       'employee[employee_profile_attributes][phone]': '',
       'employee[employee_profile_attributes][gender]': '',
       'employee[employee_profile_attributes][birthdate]': '',
-      'employee[employee_profile_attributes][ssn]-mask': 'XXX-XX-2342',
       'employee[employee_profile_attributes][ssn]': '342-34-2342',
       'employee[employee_profile_attributes][nickname]': '',
       'employee[custom_fields][udf_1]': '0',
