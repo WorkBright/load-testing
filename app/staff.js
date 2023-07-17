@@ -10,6 +10,11 @@ export function addStaff() {
 
   const randomUserId = Math.floor(Math.random() * 1000) + 1
 
+  const date = new Date()
+  const futureDate = date.getDate() + 12
+
+  date.setDate(futureDate)
+
   http.post(
     `${__ENV.BASE_URL}/staff`,
     {
@@ -34,10 +39,10 @@ export function addStaff() {
       'employee[custom_fields][udf_1]': '0',
       'employee[employee_group_ids][]': '',
       hire_date: '',
-      start_date: '07/20/2023',
+      start_date: date.toLocaleDateString('en-US'),
       end_date: '',
       'employee[new_employment_attributes][hire_date]': '',
-      'employee[new_employment_attributes][start_date]': '07/20/2023',
+      'employee[new_employment_attributes][start_date]': date.toLocaleDateString('en-US'),
       'employee[new_employment_attributes][end_date]': '',
       'employee[new_employment_attributes][onboarding_start_date]': '',
       button: '',
