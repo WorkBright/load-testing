@@ -17,8 +17,8 @@ export function login() {
   response = http.post(`${__ENV.BASE_URL}/users/sign_in`, {
     authenticity_token: vars['authenticity_token'],
     utf8: vars['utf8'],
-    'user[email]': 'tomasdornasperone@wb.test',
-    'user[password]': 'helloworld'
+    'user[email]': __ENV.ADMIN_EMAIL,
+    'user[password]': __ENV.ADMIN_PASSWORD
   })
 
   vars['csrf_token'] = response
