@@ -8,14 +8,16 @@ export function addStaff() {
 
   sleep(5)
 
+  const randomUserId = Math.floor(Math.random() * 1000) + 1
+
   let response = http.post(
     `${__ENV.BASE_URL}/staff`,
     {
       utf8: vars['utf8'],
       authenticity_token: vars['authenticity_token'],
       'employee[employee_type]': 'employee',
-      'employee[user_attributes][email]': `joesmith${exec.vu.idInTest}@gmail.com`,
-      'employee[employee_profile_attributes][first_name]': `Joe ${exec.vu.idInTest}`,
+      'employee[user_attributes][email]': `joesmith${exec.vu.idInTest}${randomUserId}@gmail.com`,
+      'employee[employee_profile_attributes][first_name]': `Joe ${exec.vu.idInTest}${randomUserId}`,
       'employee[employee_profile_attributes][middle_name]': 'C',
       'employee[employee_profile_attributes][last_name]': 'Smith',
       'employee[employee_profile_attributes][address_attributes][street]': '',
