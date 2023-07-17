@@ -10,7 +10,7 @@ export function addStaff() {
 
   const randomUserId = Math.floor(Math.random() * 1000) + 1
 
-  let response = http.post(
+  http.post(
     `${__ENV.BASE_URL}/staff`,
     {
       utf8: vars['utf8'],
@@ -29,15 +29,16 @@ export function addStaff() {
       'employee[employee_profile_attributes][phone]': '',
       'employee[employee_profile_attributes][gender]': '',
       'employee[employee_profile_attributes][birthdate]': '',
-      'employee[employee_profile_attributes][ssn]': '',
+      'employee[employee_profile_attributes][ssn]-mask': 'XXX-XX-2342',
+      'employee[employee_profile_attributes][ssn]': '342-34-2342',
       'employee[employee_profile_attributes][nickname]': '',
       'employee[custom_fields][udf_1]': '0',
       'employee[employee_group_ids][]': '',
       hire_date: '',
-      start_date: '',
+      start_date: '07/20/2023',
       end_date: '',
       'employee[new_employment_attributes][hire_date]': '',
-      'employee[new_employment_attributes][start_date]': '',
+      'employee[new_employment_attributes][start_date]': '07/20/2023',
       'employee[new_employment_attributes][end_date]': '',
       'employee[new_employment_attributes][onboarding_start_date]': '',
       button: '',
