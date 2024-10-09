@@ -4,12 +4,13 @@ import {
 } from '../../util/environment.js'
 
 const PATH_TO_FORM = 'forms/w4/submission/new'
-const TEST_EMPLOYEE_ID = 41
+const EMPLOYEES_TO_TEST = [41, 42]
 
 export const options = {
   scenarios: {
     ui: {
       executor: 'shared-iterations',
+      iterations: 2,
       options: {
         browser: {
           type: 'chromium',
@@ -22,8 +23,13 @@ export const options = {
   },
 }
 
+function getEmployeeId () {
+  return EMPLOYEES_TO_TEST[__ITER]
+}
+
 export default async function () {
-  const page = await getAuthenticatedPage(TEST_EMPLOYEE_ID)
+  const employeeId = getEmployeeId()
+  const page = await getAuthenticatedPage(employeeId)
 
   try {
     await page.goto(`${getBaseUrl()}${PATH_TO_FORM}`)
@@ -32,14 +38,12 @@ export default async function () {
     await page.locator('#number_of_jobs-1').click() // Select number of jobs
     await page.locator('canvas.form-control').click() // Signature
 
-    console.log(page.locator('div.text-right button.btn-primary'))
-
     await Promise.all([ // Submit
       page.waitForNavigation(),
       page.locator('div.text-right button.btn-primary').click()
     ])
     
-    await page.screenshot({ path: 'screenshots/screenshot.png' })
+    // await page.screenshot({ path: `screenshots/w4-${employeeId}.png` })
   } catch (error) {
     console.error(error)
   } finally {
