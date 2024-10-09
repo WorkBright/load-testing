@@ -37,7 +37,7 @@ export async function w4Workflow() {
 
       await page.locator('div.text-right button.btn-primary').click()
 
-      await page.screenshot({ path: `screenshots/screenshot${employee.id}.png` })
+      // await page.screenshot({ path: `screenshots/screenshot${employee.id}.png` })
     }
   } catch {
   } finally {

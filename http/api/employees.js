@@ -24,10 +24,11 @@ export function createEmployees() {
   response = http.post(`${__ENV.BASE_URL}/api/employees`,
     JSON.stringify({
       employee: {
-        email: `ldtest${Math.floor(Math.random() * 100001)}@loadtest.com`,
-        first_name: `Johnny ${Math.floor(Math.random() * 100001)}`,
+        email: `loadtest${Math.floor(Math.random() * 1000001)}@example.com`,
+        first_name: `Johnny ${Math.floor(Math.random() * 1000001)}`,
         last_name: 'Kaysix',
         ssn: '123-45-6789',
+        birthdate: '1985-12-03',
         address: {
           zip: '12345',
           city: 'Loadtestingville',

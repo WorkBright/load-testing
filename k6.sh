@@ -1,4 +1,4 @@
-k6 run \
+k6 cloud \
     -e BASE_URL=$(cat env/.base_url) \
     -e ADMIN_EMAIL=$(cat env/.admin_email) \
     -e ADMIN_PASSWORD=$(cat env/.admin_password) \

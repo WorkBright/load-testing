@@ -5,16 +5,17 @@ import {
 import { sleep } from 'k6'
 import { createEmployees } from '../api/employees.js'
 
-const PATH_TO_FORM = 'forms/i9/submission/new'
+const PATH_TO_I9_FORM = 'forms/i9/submission/new'
+const PATH_TO_W4_FORM = 'forms/w4/submission/new'
 const IMAGE_BUFFER = 'iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='
 
-export async function i9Workflow() {
+export async function i9AndW4Workflow() {
   const employee = createEmployees()
 
   const page = await getAuthenticatedPage(employee.id)
 
   try {
-    await page.goto(`${getBaseUrl()}/${PATH_TO_FORM}`)
+    await page.goto(`${getBaseUrl()}/${PATH_TO_I9_FORM}`)
 
     /**
      *
@@ -80,6 +81,14 @@ export async function i9Workflow() {
         page.waitForNavigation(),
         page.locator('button.next').click()
       ])
+
+      await page.goto(`${getBaseUrl()}/${PATH_TO_W4_FORM}`)
+
+      await page.locator('#filing_status-single_or_married_filing_separately').click() // Filing status: single
+      await page.locator('#number_of_jobs-1').click() // Select number of jobs
+      await page.locator('canvas.form-control').click() // Signature
+
+      await page.locator('div.text-right button.btn-primary').click()
 
       // await page.screenshot({ path: `screenshots/i9-${employeeId}.png` })
     }
