@@ -1,4 +1,4 @@
-const createDeleteEmployeesScenario = {
+const createEmployeesScenario = {
   executor: 'ramping-vus',
   gracefulStop: '30s',
   stages: [
@@ -7,7 +7,7 @@ const createDeleteEmployeesScenario = {
     { target: 0, duration: '1m' },
   ],
   gracefulRampDown: '30s',
-  exec: 'createDeleteEmployees'
+  exec: 'createEmployees'
 }
 
-export { createDeleteEmployeesScenario }
+export { createEmployeesScenario }

@@ -9,17 +9,35 @@ export function getEmployees() {
   })
 }
 
-export function createDeleteEmployees() {
+export function createEmployees() {
   let response
 
-  sleep(5)
+  const startDate = new Date()
+  const futureDate = startDate.getDate() + 12
+
+  startDate.setDate(futureDate)
+
+  const year = startDate.getFullYear()
+  const month = String(startDate.getMonth() + 1).padStart(2, '0')
+  const day = String(startDate.getDate()).padStart(2, '0')
 
   response = http.post(`${__ENV.BASE_URL}/api/employees`,
     JSON.stringify({
       employee: {
-        email: `ldtest${Math.floor(Math.random() * 100001)}@gmail.com`,
+        email: `ldtest${Math.floor(Math.random() * 100001)}@loadtest.com`,
         first_name: `Johnny ${Math.floor(Math.random() * 100001)}`,
-        last_name: 'Kaysix'
+        last_name: 'Kaysix',
+        ssn: '123-45-6789',
+        address: {
+          zip: '12345',
+          city: 'Loadtestingville',
+          state: 'NJ',
+          street: '123 Elm St',
+          country: 'US',
+        },
+        employment: {
+          start_date: `${year}-${month}-${day}`,
+        },
       }
     }),
     {
@@ -30,17 +48,6 @@ export function createDeleteEmployees() {
     }
   )
 
-  if(response.status === 200) {
-    sleep(5)
-
-    response = http.del(`${__ENV.BASE_URL}/api/employees/${JSON.parse(response.body).id}`,
-      null,
-      {
-        headers: {
-          'API-key': __ENV.API_KEY
-        }
-      }
-    )
-  }
+  return JSON.parse(response?.body)
 }
 

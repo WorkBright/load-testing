@@ -5,9 +5,10 @@ import http from 'k6/http'
  * Request definitions
  *
  */
-import { getEmployees, createDeleteEmployees } from './http/api/employees.js'
+import { getEmployees, createEmployees } from './http/api/employees.js'
 import { getCustomFields } from './http/api/customFields.js'
 import { i9Workflow } from './http/app/i9Workflow.js'
+import { w4Workflow } from './http/app/w4Workflow.js'
 import { addStaff } from './http/app/staff.js'
 import { homePage } from './http/app/homePage.js'
 import { login } from './http/auth/login.js'
@@ -18,9 +19,10 @@ import { login } from './http/auth/login.js'
  *
  */
 import { getEmployeesScenario } from './scenarios/getEmployees.js'
-import { createDeleteEmployeesScenario } from './scenarios/createDeleteEmployees.js'
+import { createEmployeesScenario } from './scenarios/createEmployees.js'
 import { getCustomFieldsScenario } from './scenarios/getCustomFields.js'
 import { i9WorkflowScenario } from './scenarios/i9Workflow.js'
+import { w4WorkflowScenario } from './scenarios/w4Workflow.js'
 import { addStaffScenario } from './scenarios/addStaff.js'
 import { homePageScenario } from './scenarios/homePage.js'
 
@@ -38,21 +40,23 @@ export const options = {
     http_req_duration: ['p(95)<1000']
   },
   scenarios: {
-    getEmployees: getEmployeesScenario,
-    getCustomFields: getCustomFieldsScenario,
-    createDeleteEmployees: createDeleteEmployeesScenario,
-    addStaff: addStaffScenario,
-    homePage: homePageScenario,
-    i9Workflow: i9WorkflowScenario
+    // getEmployees: getEmployeesScenario,
+    // getCustomFields: getCustomFieldsScenario,
+    // createEmployees: createEmployeesScenario,
+    // addStaff: addStaffScenario,
+    // homePage: homePageScenario,
+    // i9Workflow: i9WorkflowScenario,
+    w4Workflow: w4WorkflowScenario,
   },
 }
 
 export {
-  getEmployees,
-  createDeleteEmployees,
-  getCustomFields,
-  addStaff,
-  homePage,
-  i9Workflow,
-  login
+  // getEmployees,
+  // createEmployees,
+  // getCustomFields,
+  // addStaff,
+  // homePage,
+  // i9Workflow,
+  w4Workflow,
+  // login
 }

@@ -10,7 +10,7 @@ export async function getAuthenticatedPage(employeeId) {
 
   const accessToken = getUserAccessToken(employeeId)
   try {
-    await page.goto(`${getBaseUrl()}sign_in_with_token?token=${accessToken}`)
+    await page.goto(`${getBaseUrl()}/sign_in_with_token?token=${accessToken}`)
   } catch (e) {
     console.error('Something went wrong at getAuthenticatedPage:', e)
   }
