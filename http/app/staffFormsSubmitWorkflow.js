@@ -1,13 +1,14 @@
 import { getAuthenticatedPage } from '../../browser/getAuthenticatedPage.js'
 import {
   getBaseUrl,
+  getEnvironment,
 } from '../../util/environment.js'
 import { sleep } from 'k6'
 import { createEmployees } from '../api/employees.js'
 
 const PATH_TO_I9_FORM = 'forms/i9/submission/new'
 const PATH_TO_W4_FORM = 'forms/w4/submission/new'
-const IMAGE_BUFFER = 'iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='
+const IMAGE_BUFFER = open('../../util/image.txt')
 
 export async function staffFormsSubmitWorkflow() {
   const employee = createEmployees()
@@ -83,8 +84,10 @@ export async function staffFormsSubmitWorkflow() {
 
     await page.locator('button.next').click()
 
-    await page.locator('#document_number').type('123456789')
-    await page.locator('input[name="expiration_date"]').type('10/16/2999')
+    if(getEnvironment() !== 'production') {
+      await page.locator('#document_number').type('123456789')
+      await page.locator('input[name="expiration_date"]').type('10/16/2999')
+    }
 
     sleep(3)
 

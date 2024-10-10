@@ -13,3 +13,7 @@ export function getAdminPassword () {
 export function getApiKey () {
   return __ENV.API_KEY
 }
+
+export function getEnvironment () {
+  return __ENV.ENVIRONMENT
+}
