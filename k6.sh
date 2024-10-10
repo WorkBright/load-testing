@@ -36,10 +36,11 @@ echo  # move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo "Proceeding with the script..."
 
-  k6 $COMMAND \
+  K6_BROWSER_HEADLESS=false k6 $COMMAND \
     -e BASE_URL=$(cat $ENV_DIR/.base_url) \
     -e ADMIN_EMAIL=$(cat $ENV_DIR/.admin_email) \
     -e ADMIN_PASSWORD=$(cat $ENV_DIR/.admin_password) \
+    -e ENVIRONMENT=$(cat $ENV_DIR/.environment) \
     -e API_KEY=$(cat $ENV_DIR/.api_key) main.js
 else
   echo "Operation canceled."
