@@ -38,6 +38,8 @@ export function createEmployees() {
         },
         employment: {
           start_date: `${year}-${month}-${day}`,
+          i9_remote_countersign_authorized: true,
+          i9_remote_reverification_authorized: true,
         },
       }
     }),

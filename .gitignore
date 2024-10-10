@@ -1,5 +1,8 @@
 /node_modules
 /build
 /env
+/env.staging
+/env.development
+/env.production
 /api/node_modules
 /screenshots
