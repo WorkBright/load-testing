@@ -17,6 +17,7 @@ printf "\e[1;33mBASE_URL: \e[1;36m$(cat $ENV_DIR/.base_url)\e[0m\n"
 printf "\e[1;33mADMIN_EMAIL: \e[1;36m$(cat $ENV_DIR/.admin_email)\e[0m\n"
 printf "\e[1;33mADMIN_PASSWORD: \e[1;36m$(cat $ENV_DIR/.admin_password)\e[0m\n"
 printf "\e[1;33mAPI_KEY: \e[1;36m$(cat $ENV_DIR/.api_key)\e[0m\n\n"
+printf "\e[1;33mENVIRONMENT: \e[1;36m$(cat $ENV_DIR/.environment)\e[0m\n\n"
 if [ "$COMMAND" == "run"  ]; then
   printf "\e[1;31m*************************************************************************************\e[0m\n"
   printf "\e[1;31m*                                                                                   *\e[0m\n"

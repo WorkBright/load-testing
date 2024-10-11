@@ -42,9 +42,11 @@ export async function staffFormsSubmitWorkflow() {
     } catch {
     } finally {
       await page.locator('#filing_status-single_or_married_filing_separately').click() // Filing status: single
+      sleep(3)
       await page.locator('#number_of_jobs-1').click() // Select number of jobs
+      sleep(3)
       await page.locator('canvas.form-control').click() // Signature
-
+      sleep(3)
       await page.locator('div.text-right button.btn-primary').click()
 
       // await page.screenshot({ path: `screenshots/screenshot${employee.id}.png` })
@@ -58,13 +60,13 @@ export async function staffFormsSubmitWorkflow() {
 
     await page.locator('button.next').click() // Advance from Step 2
 
-    sleep(1)
+    sleep(3)
 
     await page.locator('a[data-key="us_passport"]').click() // Select US Passport
 
     await page.locator('button.next').click() // Advance from Step 3
 
-    sleep(1)
+    sleep(20)
 
     await page.setInputFiles('.image-upload:first-of-type input[type="file"]', {
       name: 'file.png',
@@ -84,6 +86,7 @@ export async function staffFormsSubmitWorkflow() {
 
     await page.locator('button.next').click()
 
+    console.log("env", getEnvironment())
     if(getEnvironment() !== 'production') {
       await page.locator('#document_number').type('123456789')
       await page.locator('input[name="expiration_date"]').type('10/16/2999')

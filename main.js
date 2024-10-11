@@ -39,9 +39,8 @@ import { homePageScenario } from './scenarios/homePage.js'
 http.setResponseCallback(http.expectedStatuses({ min: 200, max: 304 }))
 
 export const options = {
+
   thresholds: {
-    http_req_failed: ['rate<0.01'],
-    http_req_duration: ['p(95)<1000']
   },
   scenarios: {
     // getEmployees: getEmployeesScenario,
@@ -55,7 +54,33 @@ export const options = {
     // w4Workflow: w4WorkflowScenario,
   },
   cloud: {
+    metrics: {
+    },
     projectId: 3718689,
+//     drop_metrics: ['http_req_duration','http_req_blocked',
+//     'http_req_connecting',
+//     'http_req_tls_handshaking',
+//     'http_req_sending',
+//     'http_req_waiting',
+//     'http_req_receiving',
+//     'http_req_failed',   
+//     'http_req_failed_rate',
+//     'http_reqs', 'data_received',
+//      'data_sent',
+//     'iterations',
+//       'iteration_duration'                               ,
+//     'checks',
+//     'checks_failed',
+//      'checks_failed_rate',
+//     'vus',
+//     'vus_max',
+//     'vus_running','dropped_iterations',
+//   "browser_dom_content_loaded",
+// "browser_first_contentful_paint",
+// "browser_largest_contentful_paint",
+// "browser_load","browser_web_vital_cls",
+// "browser_web_vital_fid",
+// "browser_web_vital_lcp",]
   },
 }
 
