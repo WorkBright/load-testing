@@ -6,7 +6,9 @@ import { getUserAccessToken } from '../http/auth/getUserAccessToken.js'
 
 export async function getAuthenticatedPage(employeeId) {
   const context = await browser.newContext()
-  const page = await context.newPage()
+  const page = await context.newPage({
+    console: 'off'
+  })
 
   const accessToken = getUserAccessToken(employeeId)
   try {

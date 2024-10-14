@@ -10,7 +10,10 @@ export function getUserAccessToken (employeeId) {
   const response = http.post(path, null, {
     headers: {
       'API-Key': getApiKey()
-    }
+    },
+    tags: {
+      name: "signInToken"
+    },
   })
   const responseBody = JSON.parse(response?.body)
 

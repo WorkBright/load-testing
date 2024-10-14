@@ -47,9 +47,14 @@ export function createEmployees() {
       headers: {
         'API-key': __ENV.API_KEY,
         'Content-Type': 'application/json'
-      }
-    }
+      },
+      tags: {
+        name: "apiEmployeesCreate"
+      },
+    },
   )
+
+  console.log(response.body)
 
   return JSON.parse(response?.body)
 }
