@@ -54,8 +54,6 @@ export function createEmployees() {
     },
   )
 
-  console.log(response.body)
-
   return JSON.parse(response?.body)
 }
 
